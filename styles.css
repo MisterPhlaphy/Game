@@ -6,6 +6,12 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    flex-direction: column;
+}
+
+#nickname-container {
+    display: flex;
+    gap: 10px;
 }
 
 #chat-container {
@@ -31,8 +37,4 @@ body {
 #user-input input {
     flex: 1;
     padding: 10px;
-}
-
-#user-input button {
-    padding: 10px 20px;
 }
