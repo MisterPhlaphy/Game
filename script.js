@@ -1,10 +1,46 @@
+let nickname = '';
+
+function setNickname() {
+    const nicknameInput = document.getElementById('nickname');
+    nickname = nicknameInput.value.trim();
+
+    if (!nickname) {
+        alert('Please enter a nickname.');
+        return;
+    }
+
+    document.getElementById('nickname-container').style.display = 'none';
+    document.getElementById('chat-box').style.display = 'block';
+}
+
 function sendMessage() {
-    var nickname = document.getElementById("nickname").value;
-    var message = document.getElementById("message").value;
-    if (nickname && message) {
-        var formattedMessage = nickname + ": " + message;
-        document.getElementById("chat-box").innerHTML += "<p>" + formattedMessage + "</p>";
+    const messagesDiv = document.getElementById('messages');
+    const messageInput = document.getElementById('message');
+    const message = messageInput.value.trim();
+
+    if (!message) {
+        return;
+    }
+
+    const messageElement = document.createElement('div');
+    if (nickname.toLowerCase() === 'master') {
+        messageElement.innerHTML = `<strong style="color: red;">Master:</strong> ${message}`;
     } else {
-        alert("Please enter both a nickname and a message.");
+        messageElement.innerHTML = `<strong>${nickname}:</strong> ${message}`;
+    }
+
+    messagesDiv.appendChild(messageElement);
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+    messageInput.value = '';
+
+    if (messagesDiv.children.length > 100) {
+        messagesDiv.removeChild(messagesDiv.firstChild);
+    }
+}
+
+function checkEnter(event) {
+    if (event.key === 'Enter') {
+        sendMessage();
     }
 }
