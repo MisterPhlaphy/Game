@@ -7,13 +7,18 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="chat-container">
+    <div id="nickname-container">
+        <select id="nickname">
+            <option value="Player">Player</option>
+            <option value="MASTER">MASTER</option>
+        </select>
+        <input type="password" id="password" placeholder="Password (for MASTER)">
+        <button onclick="chooseNickname()">Submit</button>
+    </div>
+    <div id="chat-container" style="display: none;">
         <div id="chat-box"></div>
         <div id="user-input">
-            <input type="text" id="nickname" placeholder="Nickname (Player or MASTER)">
-            <input type="password" id="password" placeholder="Password (for MASTER)">
             <input type="text" id="message" placeholder="Type your message...">
-            <button onclick="sendMessage()">Send</button>
         </div>
     </div>
     <script src="main.js"></script>
