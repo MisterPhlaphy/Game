@@ -2,27 +2,35 @@ const chatBox = document.getElementById('chat-box');
 const nicknameInput = document.getElementById('nickname');
 const passwordInput = document.getElementById('password');
 const messageInput = document.getElementById('message');
+const nicknameContainer = document.getElementById('nickname-container');
+const chatContainer = document.getElementById('chat-container');
 
-function sendMessage() {
-    const nickname = nicknameInput.value.trim();
+let userType = 'Player';
+
+function chooseNickname() {
+    const nickname = nicknameInput.value;
     const password = passwordInput.value.trim();
-    const message = messageInput.value.trim();
 
-    if (!nickname || !message) {
-        alert('Nickname and message are required!');
-        return;
-    }
-
-    let userType = 'Player';
-    let messageColor = 'blue';
-
-    if (nickname === 'MASTER' && password === 'I LOSE') {
-        userType = 'MASTER';
-        messageColor = 'red';
-    } else if (nickname === 'MASTER') {
+    if (nickname === 'MASTER' && password !== 'I LOSE') {
         alert('Incorrect password for MASTER!');
         return;
     }
+
+    userType = nickname;
+    nicknameContainer.style.display = 'none';
+    chatContainer.style.display = 'block';
+    messageInput.focus();
+}
+
+function sendMessage() {
+    const message = messageInput.value.trim();
+
+    if (!message) {
+        alert('Message cannot be empty!');
+        return;
+    }
+
+    let messageColor = userType === 'MASTER' ? 'red' : 'blue';
 
     const messageElement = document.createElement('div');
     messageElement.style.color = messageColor;
@@ -41,6 +49,12 @@ function sendMessage() {
 
     messageInput.value = '';
 }
+
+messageInput.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        sendMessage();
+    }
+});
 
 function fetchMessages() {
     fetch('/messages')
