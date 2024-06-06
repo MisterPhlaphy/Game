@@ -3,25 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat Box</title>
+    <title>Chat Application</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div id="chat-container">
-        <div id="nickname-container">
-            <select id="nickname">
-                <option value="Player">Player</option>
-                <option value="Master">Master</option>
-            </select>
-            <input type="password" id="password" placeholder="Enter password for Master" style="display: none;" />
-            <button onclick="setNickname()">Set Nickname</button>
-        </div>
-        <div id="chat-box" style="display: none;">
-            <div id="messages"></div>
-            <input type="text" id="message" placeholder="Enter your message" onkeydown="checkEnter(event)" />
+        <div id="chat-box"></div>
+        <div id="user-input">
+            <input type="text" id="nickname" placeholder="Nickname (Player or MASTER)">
+            <input type="password" id="password" placeholder="Password (for MASTER)">
+            <input type="text" id="message" placeholder="Type your message...">
             <button onclick="sendMessage()">Send</button>
         </div>
     </div>
-    <script src="script.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
