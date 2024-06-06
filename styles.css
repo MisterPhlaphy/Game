@@ -1,0 +1,48 @@
+body {
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+#chat-container {
+    background-color: #333;
+    border: 1px solid #444;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+}
+
+#messages {
+    height: 200px;
+    overflow-y: scroll;
+    border: 1px solid #444;
+    margin-bottom: 10px;
+    padding: 5px;
+    background-color: #222;
+}
+
+input[type="text"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #555;
+    background-color: #444;
+    color: white;
+}
+
+button {
+    padding: 10px;
+    border: none;
+    background-color: #555;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #666;
+}
