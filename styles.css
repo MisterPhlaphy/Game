@@ -6,43 +6,33 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    font-family: Arial, sans-serif;
 }
 
 #chat-container {
-    background-color: #333;
-    border: 1px solid #444;
+    width: 60%;
+    max-width: 800px;
+    border: 1px solid white;
     padding: 20px;
-    width: 300px;
-    text-align: center;
 }
 
-#messages {
-    height: 200px;
+#chat-box {
+    height: 400px;
     overflow-y: scroll;
-    border: 1px solid #444;
-    margin-bottom: 10px;
-    padding: 5px;
-    background-color: #222;
-}
-
-input[type="text"], input[type="password"], select {
-    width: calc(100% - 22px);
+    border: 1px solid white;
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid #555;
-    background-color: #444;
-    color: white;
 }
 
-button {
+#user-input {
+    display: flex;
+    gap: 10px;
+}
+
+#user-input input {
+    flex: 1;
     padding: 10px;
-    border: none;
-    background-color: #555;
-    color: white;
-    cursor: pointer;
 }
 
-button:hover {
-    background-color: #666;
+#user-input button {
+    padding: 10px 20px;
 }
