@@ -1,12 +1,17 @@
 let nickname = '';
 
 function setNickname() {
-    const nicknameInput = document.getElementById('nickname');
-    nickname = nicknameInput.value.trim();
+    const nicknameSelect = document.getElementById('nickname');
+    const passwordInput = document.getElementById('password');
+    nickname = nicknameSelect.value;
 
-    if (!nickname) {
-        alert('Please enter a nickname.');
-        return;
+    if (nickname === 'Master') {
+        passwordInput.style.display = 'block';
+        const password = passwordInput.value.trim();
+        if (password !== 'I LOSE') {
+            alert('Incorrect password for Master.');
+            return;
+        }
     }
 
     document.getElementById('nickname-container').style.display = 'none';
@@ -23,10 +28,10 @@ function sendMessage() {
     }
 
     const messageElement = document.createElement('div');
-    if (nickname.toLowerCase() === 'master') {
+    if (nickname === 'Master') {
         messageElement.innerHTML = `<strong style="color: red;">Master:</strong> ${message}`;
     } else {
-        messageElement.innerHTML = `<strong>${nickname}:</strong> ${message}`;
+        messageElement.innerHTML = `<strong style="color: blue;">Player:</strong> ${message}`;
     }
 
     messagesDiv.appendChild(messageElement);
@@ -44,3 +49,12 @@ function checkEnter(event) {
         sendMessage();
     }
 }
+
+document.getElementById('nickname').addEventListener('change', function() {
+    const passwordInput = document.getElementById('password');
+    if (this.value === 'Master') {
+        passwordInput.style.display = 'block';
+    } else {
+        passwordInput.style.display = 'none';
+    }
+});
